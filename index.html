@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!-- add font -->
+		<link
+			href="https://fonts.googleapis.com/css?family=Poppins"
+			rel="stylesheet"
+		/>
+		<link rel="icon" type="image/x-icon" href="./img/user.png" />
+		<!-- add stylesheet -->
+		<link rel="stylesheet" type="text/css" href="styles.css" />
+		<title id="title">Student Registration - FOS</title>
+	</head>
+	<body>
+		<img src="./img/dots_left.png" alt="dot-set" class="dot-img-top-left" />
+		<img src="./img/dots_right.png" alt="dot-set" class="dot-img-top-right" />
+		<!-- middle container -->
+		<div class="container">
+			<img src="./img/dots_circle.png" alt="dot-circle" class="dot-img-top" />
+			<img
+				src="./img/dots_circle.png"
+				alt="dot-circle"
+				class="dot-img-bottom"
+			/>
+			<div class="header-flex">
+				<img src="./img/logo.png" alt="logo" />
+				<div class="header-section">
+					<p class="header-title">Student Registration</p>
+					<p class="sub-header">Faculty of Science</p>
+
+					<p class="sub-header">University of Peradeniya</p>
+				</div>
+			</div>
+			<br />
+
+			<!-- form -->
+			<form
+				action=""
+				method=""
+				name="student_details"
+				class="form-section display-visible"
+			>
+				<!-- personal information -->
+				<p class="form-title">Personal Information</p>
+				<!-- name -->
+				<div class="input-section">
+					<label class="label" for="name">Name with Initials</label>
+					<input
+						required
+						class="input-field"
+						type="text"
+						id="name"
+						name="name"
+						placeholder="Enter Your Name"
+						onchange="onChangeValue(event)"
+					/>
+					<p class="error" id="error-name"></p>
+				</div>
+
+				<!-- radio buttuons -->
+
+				<div class="input-section radio-btn" id="gender">
+					<label class="label radio-label" for="gender">Gender</label>
+
+					<input
+						type="radio"
+						name="gender"
+						value="male"
+						placeholder="Male"
+						onchange="checkGender()"
+					/>
+					Male
+					<input
+						type="radio"
+						name="gender"
+						value="female"
+						placeholder="Female"
+						onchange="checkGender()"
+					/>
+					Female
+					<p class="error" id="error-gender"></p>
+				</div>
+				<!-- nic and dob -->
+				<div class="flex-content">
+					<div class="input-section flex-left-secion">
+						<label class="label" for="birthday">Date of Birth</label>
+						<input
+							required
+							class="input-field"
+							type="date"
+							id="birthday"
+							name="birthday"
+							placeholder="Your name.."
+							onchange="onChangeValue(event)"
+						/>
+						<p class="error" id="error-birthday"></p>
+					</div>
+
+					<div class="input-section flex-right-section">
+						<label class="label" for="nic">NIC</label>
+						<input
+							required
+							class="input-field"
+							type="text"
+							id="nic"
+							name="nic"
+							placeholder="Enter NIC number"
+							onchange="onChangeValue(event)"
+						/>
+						<p class="error" id="error-nic"></p>
+					</div>
+				</div>
+
+				<!-- address -->
+				<div class="input-section">
+					<label class="label" for="address">Enter Your Address</label>
+					<textarea
+						class="input-field"
+						type="text"
+						id="address"
+						name="address"
+						placeholder="Enter Your Address"
+						onchange="onChangeValue(event)"
+					></textarea>
+					<p class="error" id="error-address"></p>
+				</div>
+
+				<!-- contact number and z score -->
+				<div class="flex-content">
+					<div class="input-section flex-left-secion">
+						<label class="label" for="phone">Contact number</label>
+						<input
+							required
+							class="input-field"
+							type="tel"
+							id="phone"
+							name="phone"
+							placeholder="07XXXXXXXX"
+							pattern="[0-9]{10}"
+							onchange="onChangeValue(event)"
+						/>
+						<p class="error" id="error-phone"></p>
+					</div>
+					<div class="input-section flex-right-section">
+						<label class="label" for="zscore">Z - Score</label>
+						<input
+							required
+							class="input-field"
+							type="number"
+							step="any"
+							id="zscore"
+							name="zscore"
+							placeholder="Enter Your Z - Score"
+							onchange="onChangeValue(event)"
+						/>
+						<p class="error" id="error-zscore"></p>
+					</div>
+				</div>
+				<!-- course information -->
+				<p class="form-title">Course Information</p>
+
+				<!-- select stream -->
+				<div class="input-section">
+					<label class="label" for="stream">Select your Stream</label>
+					<select
+						id="stream"
+						onchange="selectStream()"
+						title="stream"
+						class="input-field"
+						required
+					>
+						<option value="" disabled selected>Select your Stream</option>
+						<option value="Biology Stream">Biological Stream</option>
+						<option value="Physical Stream">Physical Stream</option>
+						<option value="cm">CM</option>
+						<option value="sor">SOR</option>
+					</select>
+					<p class="error" id="error-stream"></p>
+
+					<!-- combinations -->
+					<p class="title-comb" id="title-comb"></p>
+					<div id="combination1"></div>
+					<div id="combination2"></div>
+					<div id="combination3"></div>
+					<div id="combination4"></div>
+					<div id="combination5"></div>
+				</div>
+				<!-- button section -->
+				<div class="btn-group">
+					<input type="submit" value="Submit" class="btn submit" id="submit" />
+					<input type="reset" class="btn reset" onclick="resetError()" />
+				</div>
+			</form>
+			<div class="output-section display-none">
+				<div class="output-title-section">
+					<img src="./img/complete.png" alt="logo" />
+					<h1 class="header-title">Registration Completed</h1>
+				</div>
+
+				<div class="output-details-section">
+					<div>
+						<p class="output-label">Name</p>
+						<p class="output-label">Gender</p>
+						<p class="output-label">Birthday</p>
+						<p class="output-label">NIC</p>
+						<p class="output-label">Address</p>
+						<p class="output-label">Contact number</p>
+						<p class="output-label">Z - Score</p>
+						<p class="output-label">Stream</p>
+						<p class="output-label" id="output-name-com0"></p>
+						<p class="output-label" id="output-name-com1"></p>
+						<p class="output-label" id="output-name-com2"></p>
+						<p class="output-label" id="output-name-com3"></p>
+						<p class="output-label" id="output-name-com4"></p>
+					</div>
+
+					<div>
+						<p class="output-label">:</p>
+						<p class="output-label">:</p>
+						<p class="output-label">:</p>
+						<p class="output-label">:</p>
+						<p class="output-label">:</p>
+						<p class="output-label">:</p>
+						<p class="output-label">:</p>
+						<p class="output-label">:</p>
+						<p class="output-label" id="output-dot-com0"></p>
+						<p class="output-label" id="output-dot-com1"></p>
+						<p class="output-label" id="output-dot-com2"></p>
+						<p class="output-label" id="output-dot-com3"></p>
+						<p class="output-label" id="output-dot-com4"></p>
+					</div>
+					<div>
+						<p class="output-label" id="output-name"></p>
+						<p class="output-label" id="output-gender"></p>
+						<p class="output-label" id="output-birthday"></p>
+						<p class="output-label" id="output-nic"></p>
+						<p class="output-label" id="output-address"></p>
+						<p class="output-label" id="output-phone"></p>
+						<p class="output-label" id="output-zscore"></p>
+						<p class="output-label" id="output-stream"></p>
+						<p class="output-label" id="output-com0"></p>
+						<p class="output-label" id="output-com1"></p>
+						<p class="output-label" id="output-com2"></p>
+						<p class="output-label" id="output-com3"></p>
+						<p class="output-label" id="output-com4"></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+	<script type="text/javascript" src="script.js"></script>
+</html>
